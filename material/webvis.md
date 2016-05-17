@@ -8,8 +8,6 @@
 ## Example 1
 What do you think the following code does?
 
-
-
 ```html
 <?xml version="1.0"?>
 <svg width="120" height="120"
@@ -20,7 +18,6 @@ What do you think the following code does?
 ```
 **two_rect.svg**
 
-
 ???
 
 Draw it for me.
@@ -30,7 +27,6 @@ Draw it for me.
 ## Example 2
 
 What do you think the following code does?
-
 
 ```html 
 <?xml version="1.0"?>
@@ -47,7 +43,7 @@ What do you think the following code does?
 ---
 
 ## Example 3
-Finally, what do you think the following code does:
+What do you think the following code does:
 
 ```html 
 <?xml version="1.0"?>
@@ -66,6 +62,8 @@ Draw it for me.
 ---
 
 ## Example 4:
+
+What does the following code do?
 
 ```html 
 <!doctype html>
@@ -97,6 +95,8 @@ Draw it for me.
 ```
 **simple_table.html**
 
+What is the relationship between your dataset and the code in the examples above?
+
 ---
 
 ## Example 5:
@@ -114,6 +114,11 @@ svg.selectAll(".bars")
 	.attr("height", function(d) {return d})
 ```
 **create_rectangles.js**
+
+[Live code](http://tributary.io/inlet/d884234c34d9f0a343ddcc07fd40e1f2)
+
+Probably better to build all live code into a simple html template that includes d3 and a svg area, much like tributary
+
 ---
 ## Exercise 1.  Edit example 3 to adjust the height of the bars to something different.
 
