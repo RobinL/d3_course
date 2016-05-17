@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Data visualisation</title>
+  </head>
+  
+  <body>
+    <div id="svgcontainer"></div>
+    
+    <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript" src="js/create_svg.js"></script>
+    <script type="text/javascript">var svg = d3.select("svg")
+data = [30,50,70,90]
+
+svg.selectAll(".bars")
+	.data(data)
+	.enter()
+	.append("rect")
+	.attr("x", function(d) {return d})
+	.attr("y", function(d) {return d})
+	.attr("width", function(d) {return d})
+	.attr("height", function(d) {return d})
+</script>
+  </body>
+
+</html>

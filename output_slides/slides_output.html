@@ -1,4 +1,11 @@
-# Introduction to interactive data visualisation on the web 
+<!DOCTYPE html>
+<html>
+  <head>
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+     <textarea id="source">
+      # Introduction to interactive data visualisation on the web 
 
 #  Session 1:  Basics
 
@@ -15,7 +22,7 @@ What do you think the following code does?
   <rect x="60" y="60" width="30" height="30"/>
 </svg>
 ```
-**two_rect.svg**
+Click [here](../output_code_samples/two_rect.svg) for live version.
 
 ???
 
@@ -37,7 +44,7 @@ What do you think the following code does?
   <rect x="60" y="60" width="30" height="30" style="fill: #674BBA"/>
 </svg>
 ```
-**four_rect_colours.svg**
+Click [here](../output_code_samples/four_rect_colours.svg) for live version.
 
 ---
 
@@ -54,7 +61,7 @@ What do you think the following code does:
   <rect x="90" y="20" width="20" height="80" style="fill: #888"/>
 </svg>
 ```
-**01_four_rect_colours.svg**
+Click [here](../output_code_samples/01_four_rect_colours.svg) for live version.
 
 Draw it for me.
 
@@ -66,17 +73,13 @@ What does the following code do?
 
 ```html 
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Data visualisation</title>
 </head>
-
 <body>
-
   <h1>Hello world!</h1>
-
   <table>
     <tr>
       <td>Robin</td>
@@ -87,12 +90,10 @@ What does the following code do?
       <td>51 points</td> 
     </tr>
   </table>
-
 </body>
-
 </html>
 ```
-**simple_table.html**
+Click [here](../output_code_samples/simple_table.html) for live version.
 
 What is the relationship between your dataset and the code in the examples above?
 
@@ -112,7 +113,7 @@ svg.selectAll(".bars")
 	.attr("width", function(d) {return d})
 	.attr("height", function(d) {return d})
 ```
-**create_rectangles.js**
+Click [here](../output_code_samples/create_rectangles.js) for live version.
 
 [Live code](http://tributary.io/inlet/d884234c34d9f0a343ddcc07fd40e1f2)
 
@@ -144,3 +145,12 @@ There are a number of reasons.
 * If we develop for the web, everyone can access it without specialist softare.  The web is really more like an opearting system nowadays.
 * For better or worse, they have become a standard which everyone has rallied behind.  A bit like the QWERTY keyboard.
 * The 
+
+    </textarea>
+     <script src="js/remark-latest.min.js">
+    </script>
+    <script>
+       var slideshow = remark.create();
+    </script>
+  </body>
+</html>
