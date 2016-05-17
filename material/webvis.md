@@ -4,7 +4,6 @@
 
 ---
 
-
 ## Example 1
 What do you think the following code does?
 
