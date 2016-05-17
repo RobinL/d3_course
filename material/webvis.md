@@ -9,7 +9,8 @@
 What do you think the following code does?
 
 
-```html 
+
+```html
 <?xml version="1.0"?>
 <svg width="120" height="120"
      xmlns="http://www.w3.org/2000/svg">
@@ -17,6 +18,9 @@ What do you think the following code does?
   <rect x="60" y="60" width="30" height="30"/>
 </svg>
 ```
+**two_rect.svg**
+
+
 ???
 
 Draw it for me.
@@ -38,6 +42,7 @@ What do you think the following code does?
   <rect x="60" y="60" width="30" height="30" style="fill: #674BBA"/>
 </svg>
 ```
+**four_rect_colours.svg**
 
 ---
 
@@ -54,6 +59,7 @@ Finally, what do you think the following code does:
   <rect x="90" y="20" width="20" height="80" style="fill: #888"/>
 </svg>
 ```
+**01_four_rect_colours.svg**
 
 Draw it for me.
 
@@ -89,6 +95,7 @@ Draw it for me.
 
 </html>
 ```
+**simple_table.html**
 
 ---
 
@@ -106,6 +113,7 @@ svg.selectAll(".bars")
 	.attr("width", function(d) {return d})
 	.attr("height", function(d) {return d})
 ```
+**create_rectangles.js**
 ---
 ## Exercise 1.  Edit example 3 to adjust the height of the bars to something different.
 
