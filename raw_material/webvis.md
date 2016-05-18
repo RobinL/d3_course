@@ -1,25 +1,41 @@
-# Introduction to interactive data visualisation on the web 
+## Introduction to data visualisation on the web 
+
+
+### Course outline
+
+Learning interactive data visualisation is about mastering a few core concepts: 
+
+* The relationship between Javascript, HTML and CSS
+* How HTML and SVG code is translated by the browser into graphics.
+* D3 as an interface between data and SVG/HTML code.
+    * Data binding, and enter, update and exit 
+    * Scales
+    * Axes
+    * Transitions
+* Manipulating datasets in Javascript.
+
+This course uses a 'learning by doing' approach - I will talk at you as little as possible.
+
+If you are reading online, you can press 'P' to see presenter notes for the slides.
+
+???
+
+We are going to be using D3.js which is probably the most advanced data visualisation library for the web.
+
+You will find that if you know D3.js, picking up some simpler, out of the box tools will be easy.
+
+---
 
 #  Session 1:  Basics
 
+This session covers how HTML and SVG code is translated by the browser into graphics.
+
+???
+
+A mental model of the relationship between SVG code and what it looks like on the page will be essential to effective programming.
 
 ---
 
-## Understanding d3 and course outline
-
-Learning d3 is really learning a few core concepts:
-
-HTML and SVG as the 'canvas' that you'll be drawing on
-
-D3 as an interface between data, and svg/html code
-
-Loading data into the web browser
-Data binding, and enter, update and exit 
-Scales
-Axes
-
-
----
 
 ## Example 1
 What do you think the following code does?
@@ -105,32 +121,65 @@ What does the following code do?
 ```
 **simple_table.html**
 
+
+---
+## Discussion question:
+
 What is the relationship between your dataset and the code in the examples above?
+
+???
+
+In all the example, small amounts of data turn into large amounts of code.
+
+Each example can be represented by some data:
+
+For instance, example 1 is:
+
+[[0,1][1,0]]
+
+There is then a logical mapping - a set of rules that turns that that data into the HTML or SVG code.
 
 ---
 
+## Discussion question:
+
+I want you to put yourself in the shoes of someone thinking of designing a general purpose piece of software to help write web visualisations.
+
+The objective of yourr software is therefore to simplify the task of produce the kind of HTML and SVG code we just saw.
+
+*Question* : What do you think would be some attractive features of your software?  What would you want it to do?
+
+This is important because as soon as you want to produce a real chart such as a bar chart - the SVG code gets very complex and it would be extremely laborious to code it by hand.  [Here](../other_resources/simple_bar_chart.svg) is an example.
+
+???
+
+Automatic code generation
+
+Abstractions for common tasks like 
+
+And the most powerful concept will be the concept of binding data to documents.  That's why it's called Data Driven Documents.  Because the visuals are a mapping between data points and things you can see.  
+
+---
 ## Example 5:
 ```javascript
 var svg = d3.select("svg")
-data = [30,50,70,90]
+data = [10,20,30,40]
 
 svg.selectAll(".bars")
 	.data(data)
 	.enter()
-	.append("rect")
-	.attr("x", function(d) {return d})
-	.attr("y", function(d) {return d})
-	.attr("width", function(d) {return d})
-	.attr("height", function(d) {return d})
-```
-**create_rectangles.js**
+	.append("circle")
+	.attr("cx", function(d,i) {return 100 + i*100})
+	.attr("cy", function(d) {return 100})
+	.attr("r", function(d) {return d})
 
-[Live code](http://tributary.io/inlet/d884234c34d9f0a343ddcc07fd40e1f2)
+```
+**create_circles.js**
 
 Probably better to build all live code into a simple html template that includes d3 and a svg area, much like tributary
 
 ---
-## Exercise 1.  Edit example 3 to adjust the height of the bars to something different.
+## Exercise 1.  Edit example 5 to adjust the height of the bars to something different.
 
 ???
 
@@ -141,9 +190,7 @@ You've just completed your first two pieces of web-based data visualisation - wi
 
 Now you know what you're working towards.  The web browser presents you with a piece of blank paper to draw on, and you can put things like lines, circles and rectangles on it.  You can fill them in different colours, add borders, make them transparent.  You can do what you like.  And you can do this interactively - i.e. you can dynamically change this code.
 
-I want you to put yourself in the shoes of someone thinking of designing a general purpose piece of software to help write web visualisations.
 
-Another way of saying this:  I want you to put yourselves in the shoes of someone designing software that assists you to create code like those two examples you've just seen.
 
 ####Exercise 2.  What is the data that corresponds to the examples?
 
