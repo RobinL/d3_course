@@ -2,6 +2,23 @@
 
 #  Session 1:  Basics
 
+
+---
+
+## Understanding d3 and course outline
+
+Learning d3 is really learning a few core concepts:
+
+HTML and SVG as the 'canvas' that you'll be drawing on
+
+D3 as an interface between data, and svg/html code
+
+Loading data into the web browser
+Data binding, and enter, update and exit 
+Scales
+Axes
+
+
 ---
 
 ## Example 1
