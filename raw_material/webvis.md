@@ -43,18 +43,16 @@ A mental model of the relationship between SVG code and what it looks like on th
 
 Experiment with the sliders in [this example](http://tributary.io/inlet/9b9f338271b8d522fb34c9cff32125b5).  See what they do.
 
-Can you increase the number of items shown?
+* Can you increase the number of items shown?
 
-Can you change their size?
+* Can you change their size?
 
-Can you change the period of the wave?
-
-
+* Can you change the period of the wave?
 
 ---
 
 ## Example 1
-What do you think the following code does?
+What does the following code do?
 
 ```html
 <?xml version="1.0"?>
@@ -244,6 +242,81 @@ There are a number of reasons.
 
 #Session 2:  Scales and axes
 
+
+---
+
+Before we return to D3, we need to cover a little material on the underlying tools you're using.
+
+When we program in a web browser, we are really using three programming languages:  HTML,CSS and Javascript.  They each serve a different role.
+
+* HTML and SVG for the structural elements
+* CSS for presentation
+* Javascript for behaviour
+
+A good illustration of this 'separation of concerns' is [the CSS Zen Garden](http://www.csszengarden.com/).
+
+When we use d3.js, this separation of concerns isn't quite so clear.  We use javascript not only for interactivity, but also to generate HTML and SVG code, and sometimes to hard code styling information into the HTML.
+
+???
+
+d3.js is a Javascript library.  That means that is a set of pre-written javascript programs that help you out.
+
+We've seen that we can hand code HTML and SVG.  But using HTML 
+
+---
+
+Here's an example:
+
+
+```html 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Data visualisation</title>
+  <style type="text/css">h1 {color:red; } </style>
+</head>
+<body>
+  <h1>Hello world!</h1>
+  <script type="text/javascript">alert("hello")</script>
+</body>
+</html>
+```
+**js_html_css_example.html**
+
+???
+
+One of the main things you need to understand is the execution order of code.
+
+The code runs in the order specified in the HTML.
+
+This is also the case when we load in external javascript files
+
+<script type="text/javascript" src="js/d3.js"></script>
+
+
+---
+
+When we program in things like Tributary, what's effectively going on is that you're writing javascript into a pre-built template that looks a bit like this:
+```html 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Data visualisation</title>
+  <style type="text/css">h1 {color:red; } </style>
+</head>
+  <body>
+    <div id="svgcontainer"></div>
+    <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript"> var svg = d3.select('#svgcontainer').append("svg") </script>
+    <script type="text/javascript">//Your code goes here e.g.
+      svg.append("rect").attr("x", 10).attr("y",10).attr("height",10).attr("width",10)
+      </script>
+  </body>
+</html>
+```
+**js_html_css_example.html**
 
 ---
 
