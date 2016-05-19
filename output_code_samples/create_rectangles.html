@@ -13,16 +13,17 @@
     <script type="text/javascript" src="js/d3.js"></script>
     <script type="text/javascript" src="js/create_svg.js"></script>
     <script type="text/javascript">var svg = d3.select("svg")
-data = [30,50,70,90]
+data = [10,20,30,40]
 
 svg.selectAll(".bars")
-	.data(data)
-	.enter()
-	.append("rect")
-	.attr("x", function(d) {return d})
-	.attr("y", function(d) {return d})
-	.attr("width", function(d) {return d})
-	.attr("height", function(d) {return d})
+  .data(data)
+  .enter()
+  .append("rect")
+  .attr("x", function(d,i) {return 10 + i*20})
+  .attr("y", function(d) {return 100 - d})
+  .attr("height", function(d) {return d})
+  .attr("width", function(d) {return 20})
+
 </script>
   </body>
 
