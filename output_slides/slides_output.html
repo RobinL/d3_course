@@ -49,24 +49,6 @@ You'll be writing d3.js code which itself 'writes' SVG and HTML code.  Somewhat 
 
 ---
 
-## Exercise
-
-Experiment with the sliders in [this example](http://tributary.io/inlet/9b9f338271b8d522fb34c9cff32125b5).  See what they do.
-
-* Can you increase the number of items shown?
-
-* Can you change their size?
-
-* Can you change the period of the wave?
-
-???
-
-Is this a mapping between data and visuals?  The answer is 'kind of'.  As an example of data visualisation [this example](http://tributary.io/inlet/bb5e8353df7d7a9cb472be82ae123d10) probably makes more sense.
-
-What this example does show you is that in d3 nothing is 'out of the box'.  In this example, we choose everything about the visuals.
-
----
-
 ## Example
 What does the following code do?
 
@@ -147,7 +129,13 @@ Click [here](../output_code_samples/simple_table.html) for live version.
 
 ???
 
-Now you know what you're working towards.  The web browser presents you with a piece of blank paper to draw on, and you can put things like lines, circles and rectangles on it.  You can fill them in different colours, add borders, make them transparent.  You can do what you like.  And you can do this interactively - i.e. you can dynamically change this code.
+The similarity between these examples is that you have information, and that information is held in a structured format - in tags.  The meaning of the tags varies - from something tangible like a rectange or circle to something a bit more abstract like a table row, or something even more abstract like a header, or a table row.
+
+D3 as a library will give us a much easier way of manipulating these documents which are made of tags.
+
+With these examples, now you know what we're working towards.  The web browser presents you with a piece of blank paper to draw on, and you can put things like lines, circles and rectangles on it.  You can fill them in different colours, add borders, make them transparent.  You can do what you like.  And you can do this interactively - i.e. you can dynamically change this code.
+
+
 
 ---
 ## Discussion question:
@@ -168,25 +156,30 @@ Example 2 is :
 
 [2,3,5,8]
 
+Example 3 is:
+
+[[Robin, 50], [James, 51]]
+
 From the data there is then a logical mapping to the graphics - a set of rules that turns that that data into the HTML or SVG code.
 
 ---
 
-## Discussion question:
+## Objectives of a web vis library.
 
-Put yourself in the shoes of someone thinking of designing a general purpose piece of software to help write web visualisations.
+If you want to produce anything moderately complex - such as a bar chart - the SVG code gets very complex and it would be extremely laborious to code it by hand.  [Here](../other_resources/simple_bar_chart.svg) is an example.  When rendered by the browser, this looks like [this](https://bl.ocks.org/mbostock/raw/3885304/)
 
-The objective of your software is therefore to simplify the task of producing the kind of HTML and SVG code we just saw.
+This is where libraries like d3 come in.  Its objective is to provide an expressive, flexible and succinct way of creating web graphics.  We want to abstract away the difficulty in hand coding things like the above example, but at the same time retain the flexibility of the web browser as a blank canvas to draw on, rather than relying on 'out of the box' charts.   
 
-*Question* : What do you think would be some attractive features of your software?  What would you want it to do?
-
-Having such a library important because as soon as you want to produce anything moderately complex - such as a bar chart - the SVG code gets very complex and it would be extremely laborious to code it by hand.  [Here](../other_resources/simple_bar_chart.svg) is an example.  When rendered by the browser, this looks like [this](https://bl.ocks.org/mbostock/raw/3885304/)
+Mike Bostock, the author of d3, has been thinking about this problem for many years as part of postgraduate study and as a data visualisation expert for the New York Times.
 
 ???
 
+d3 is therefore not really a charting library.  It's more a drawing library with a focus on data visualisation.
+
 The kind of things you might want the library to do are:
 
-Automatic code generation - there is a lot of repetition in the raw SVG and HTML code.  How to we ensure we don't have to repeat ourselves?
+Automatic code generation - there is a lot of repetition in the raw SVG and HTML code.  How to we ensure we don't have to repeat ourselves
+
 
 Abstractions for common visual elements like scales.
 
@@ -206,15 +199,16 @@ We'll see that d3.js provides this intermediate between data and graphics in qui
 
 
 ---
-## Example :
+## Example:
 
-Take a look at the following d3 code, and in your web browser, have a look at the svg code it generates.
+Here is our first example of d3 code. In your web browser, have a look at the svg code it generates.
 
 ```javascript
 var svg = d3.select("svg")
 data = [10,20,30,40]
 
-svg.selectAll(".bars")
+svg
+  .selectAll(".bars")
 	.data(data)
 	.enter()
 	.append("rect")
@@ -225,6 +219,13 @@ svg.selectAll(".bars")
 
 ```
 Click [here](../output_code_samples/create_rectangles.html) for live version.
+
+
+???
+
+Explain selections
+
+Explain 
 
 
 ---
@@ -327,12 +328,13 @@ In the previous example, I mixed css, Javascript and HTML all into one file.
 
 To organise things better it's more typical to split everything out into a file structure that looks like this:
 
-```
+```code
 index.html
 js/d3.js
 js/my_code.js
 css/my_style.css
 ```
+
 
 ---
 
@@ -364,6 +366,23 @@ You're effectively writing javascript into a pre-built template that looks a bit
 ```
 Click [here](../output_code_samples/js_html_css_example2.html) for live version.
 
+
+???
+
+I'm going to be using tributary.io a lot as part of this course because it's so easy.  But for you to apply your skills, you need to understand what's really going on behind the scenes.  It sets everything up for you.  In reality, I tend to use a template project.
+
+[Here's my simple template](https://github.com/RobinL/d3_underscore_template)
+
+
+---
+
+#selectAll and enter
+
+Probably the most fundamental concept to the D3 library is the idea of binding data to your document.  This is what allows you to create a mapping between your data and the elements you see on the screen.  So we are going to talk this through slowly.
+
+We will also come back to it a number of times.
+
+
 ---
 
 Recall the following example:
@@ -384,6 +403,29 @@ svg.selectAll(".bars")
 ```
 Click [here](../output_code_samples/create_rectangles.html) for live version.
 
+???
+
+This example just deals with enter.  It does not deal with what to do if we want to come back and add more bars later on.
+
+---
+
+Let's take a second look at this example in a different context.
+
+```javascript
+var svg = d3.select("svg")
+data = [10,20,30,40]
+
+svg.selectAll(".bars")
+  .data(data)
+  .enter()
+  .append("rect")
+  .attr("x", function(d,i) {return 10 + i*20})
+  .attr("y", function(d) {return 100 - d})
+  .attr("height", function(d) {return d})
+  .attr("width", function(d) {return 20})
+
+```
+Click [here](../output_code_samples/create_rectangles.html) for live version.
 
 Play with this example in [Tributary.io](http://tributary.io/inlet/) 
 
@@ -402,14 +444,17 @@ Play with this example in [Tributary.io](http://tributary.io/inlet/)
 * But there is a general solution to this problem.  The objective is just to map one set of numbers (the domain), onto another set of numbers (the range)
 * There are many other applications of scales - such as mapping numbers to colours.
 
+http://tributary.io/inlet/4648a7873c2bc372af8cc4c9782d798a
+http://tributary.io/inlet/4648a7873c2bc372af8cc4c9782d798a
+http://tributary.io/inlet/4648a7873c2bc372af8cc4c9782d798a
 
 ---
 class: smallcode
 
 
+
 ```js 
 my_array = ["a", "b", "c"]
-
 
 
 svg.selectAll(".hello")
@@ -419,25 +464,48 @@ svg.selectAll(".hello")
   .text(function(d) {return d})
 
 ``` 
-
+Click [here](../output_code_samples/js_html_css_example_doesnt_work.html) for live version.
 
 ---
+class: smallcode
 
-d3 doesn't have to be used to produce output that the web browser can interpret
+```html 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Data visualisation</title>
+  <style type="text/css">h1 {color:red; } </style>
+</head>
+  <body>
+  <input type="range" name="points" min="1" max="10">
+    <div><span __data__="{amount=10, key="span1"}"></span> pounds is equal to <span __data__="{amount=10, key="span1"}"></span> Euros </div>
+    <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript">
 
-```js 
-my_array = ["a", "b", "c"]
+      d3.select("input").on("change", function() {
 
+          var amount = d3.select("input").property("value")  
+          var thisd = [{"amount":amount, "key":"span1"}, {"amount":amount*1.4, "key":"span2"}]
+          
+          d3.selectAll("span")
+            
+            .data(thisd, function(d) {
+              return d.key
+            })
+            
+            .text(function(d) {
+              return d.amount
+            })
+      })
 
+      // d3.select("input").on("change")();
 
-svg.selectAll(".hello")
-  .data(my_array)
-  .enter()
-  .append("hello")
-  .text(function(d) {return d})
-
-``` 
-Click [here](../output_code_samples/hello.html) for live version.
+      </script>
+  </body>
+</html>
+```
+Click [here](../output_code_samples/js_html_css_example_3.html) for live version.
 
 ---
 

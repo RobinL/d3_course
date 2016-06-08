@@ -1,0 +1,9 @@
+my_array = ["a", "b", "c"]
+
+
+svg.selectAll(".hello")
+  .data(my_array)
+  .enter()
+  .append("hello")
+  .text(function(d) {return d})
+
