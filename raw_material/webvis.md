@@ -329,6 +329,19 @@ css/my_style.css
 ```
 **d-d**
 
+
+---
+
+[Here](https://github.com/RobinL/simple_d3_template) is a very simple template project:
+
+
+To git clone this type:
+
+```code
+git clone git@github.com:RobinL/simple_d3_template.git
+```
+**d-d**
+
 ---
 
 So what's going on in tributary.io?
@@ -364,7 +377,7 @@ You're effectively writing javascript into a pre-built template that looks a bit
 
 I'm going to be using tributary.io a lot as part of this course because it's so easy.  But for you to apply your skills, you need to understand what's really going on behind the scenes.  It sets everything up for you.  In reality, I tend to use a template project.
 
-[Here's my simple template](https://github.com/RobinL/d3_underscore_template)
+[Here's my simple template](https://github.com/RobinL/d3_underscore_template)  which contains a bit more than the simple example from a couple of slides back.
 
 
 ---
@@ -398,9 +411,22 @@ svg.selectAll(".bars")
 
 ???
 
-This example just deals with enter.  It does not deal with what to do if we want to come back and add more bars later on.
+This example just deals with enter.  
+
 
 ---
+
+##enter, update and exit
+
+
+http://tributary.io/inlet/79e488516a98132cc08b610ac28f482a
+
+
+
+
+---
+
+##Introducing D3 scales.
 
 Let's take a second look at this example in a different context.
 
@@ -429,7 +455,7 @@ Play with this example in [Tributary.io](http://tributary.io/inlet/)
 
 ---
 
-##Introducing D3 scales.
+
 
 * Data visualisation in d3 is about creating a mapping between data an what you see on a screen
 * You screen in made up of pixels, so you will usually want to scale the data to fit on the screen.
@@ -438,8 +464,7 @@ Play with this example in [Tributary.io](http://tributary.io/inlet/)
 * There are many other applications of scales - such as mapping numbers to colours.
 
 http://tributary.io/inlet/4648a7873c2bc372af8cc4c9782d798a
-http://tributary.io/inlet/4648a7873c2bc372af8cc4c9782d798a
-http://tributary.io/inlet/4648a7873c2bc372af8cc4c9782d798a
+
 
 ---
 class: smallcode

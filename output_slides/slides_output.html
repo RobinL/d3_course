@@ -336,6 +336,19 @@ css/my_style.css
 ```
 
 
+
+---
+
+[Here](https://github.com/RobinL/simple_d3_template) is a very simple template project:
+
+
+To git clone this type:
+
+```code
+git clone git@github.com:RobinL/simple_d3_template.git
+```
+
+
 ---
 
 So what's going on in tributary.io?
@@ -371,7 +384,7 @@ Click [here](../output_code_samples/js_html_css_example2.html) for live version.
 
 I'm going to be using tributary.io a lot as part of this course because it's so easy.  But for you to apply your skills, you need to understand what's really going on behind the scenes.  It sets everything up for you.  In reality, I tend to use a template project.
 
-[Here's my simple template](https://github.com/RobinL/d3_underscore_template)
+[Here's my simple template](https://github.com/RobinL/d3_underscore_template)  which contains a bit more than the simple example from a couple of slides back.
 
 
 ---
@@ -405,9 +418,22 @@ Click [here](../output_code_samples/create_rectangles.html) for live version.
 
 ???
 
-This example just deals with enter.  It does not deal with what to do if we want to come back and add more bars later on.
+This example just deals with enter.  
+
 
 ---
+
+##enter, update and remove
+
+
+http://tributary.io/inlet/79e488516a98132cc08b610ac28f482a
+
+
+
+
+---
+
+##Introducing D3 scales.
 
 Let's take a second look at this example in a different context.
 
@@ -436,7 +462,7 @@ Play with this example in [Tributary.io](http://tributary.io/inlet/)
 
 ---
 
-##Introducing D3 scales.
+
 
 * Data visualisation in d3 is about creating a mapping between data an what you see on a screen
 * You screen in made up of pixels, so you will usually want to scale the data to fit on the screen.
@@ -479,7 +505,7 @@ class: smallcode
 </head>
   <body>
   <input type="range" name="points" min="1" max="10">
-    <div><span __data__="{amount=10, key="span1"}"></span> pounds is equal to <span __data__="{amount=10, key="span1"}"></span> Euros </div>
+    <div><span></span> pounds is equal to <span></span> Euros </div>
     <script type="text/javascript" src="js/d3.js"></script>
     <script type="text/javascript">
 
@@ -489,11 +515,7 @@ class: smallcode
           var thisd = [{"amount":amount, "key":"span1"}, {"amount":amount*1.4, "key":"span2"}]
           
           d3.selectAll("span")
-            
-            .data(thisd, function(d) {
-              return d.key
-            })
-            
+            .data(thisd)
             .text(function(d) {
               return d.amount
             })

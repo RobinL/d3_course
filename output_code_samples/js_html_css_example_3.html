@@ -7,7 +7,7 @@
 </head>
   <body>
   <input type="range" name="points" min="1" max="10">
-    <div><span __data__="{amount=10, key="span1"}"></span> pounds is equal to <span __data__="{amount=10, key="span1"}"></span> Euros </div>
+    <div><span></span> pounds is equal to <span></span> Euros </div>
     <script type="text/javascript" src="js/d3.js"></script>
     <script type="text/javascript">
 
@@ -17,11 +17,7 @@
           var thisd = [{"amount":amount, "key":"span1"}, {"amount":amount*1.4, "key":"span2"}]
           
           d3.selectAll("span")
-            
-            .data(thisd, function(d) {
-              return d.key
-            })
-            
+            .data(thisd)
             .text(function(d) {
               return d.amount
             })
